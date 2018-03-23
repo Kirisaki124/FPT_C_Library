@@ -25,6 +25,13 @@ void swap(char a[], char b[]){
     strcpy(b, c);
 }
 
+// Khi dùng địa chỉ
+void swapString(char **str1_ptr, char **str2_ptr)
+{
+  char *temp = *str1_ptr;
+  *str1_ptr = *str2_ptr;
+  *str2_ptr = temp;
+}
 
 // Tìm số nguyên tố
 // trả lại giá trị 0 và 1
@@ -172,7 +179,5 @@ int findValueInArray(int a[], int listSize, int value){
 
 int main() {
     // int x = isPrime(2);
-    int a[] = {1,2,5,4,8};
-    int x = findMin(a,5);
-    printf("%f\n", x);
+
 }

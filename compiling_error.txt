@@ -1,0 +1,15 @@
+C:\Users\Son\Desktop\C_Library\tung.cc: In function 'void swap(char**, char**)':
+C:\Users\Son\Desktop\C_Library\tung.cc:23:16: error: cannot convert 'char**' to 'const char*' for argument '2' to 'char* strcpy(char*, const char*)'
+     strcpy(c, a);
+                ^
+C:\Users\Son\Desktop\C_Library\tung.cc:24:16: error: cannot convert 'char**' to 'char*' for argument '1' to 'char* strcpy(char*, const char*)'
+     strcpy(a, b);
+                ^
+C:\Users\Son\Desktop\C_Library\tung.cc:25:16: error: cannot convert 'char**' to 'char*' for argument '1' to 'char* strcpy(char*, const char*)'
+     strcpy(b, c);
+                ^
+C:\Users\Son\Desktop\C_Library\tung.cc: In function 'int main()':
+C:\Users\Son\Desktop\C_Library\tung.cc:175:34: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+     char* a[] = {"Hello", "World"};
+                                  ^
+C:\Users\Son\Desktop\C_Library\tung.cc:175:34: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
