@@ -2,14 +2,14 @@
 #include "string.h"
 #include "math.h"
 
-// doi cho so binh thuong
+// đổi chỗ 2 số int
 void swap(int &a, int &b){
     int c = b;
     b = a;
     a = c;
 }
 
-// doi cho so double
+// đổi chỗ 2 số double
 void swap(double &a, double &b){
     double c = b;
     b = a;
@@ -17,7 +17,7 @@ void swap(double &a, double &b){
 }
 
 
-// doi cho mang
+// đổi chỗ 2 array
 void swap(char a[], char b[]){
     char c[1000];
     strcpy(c, a);
@@ -26,10 +26,10 @@ void swap(char a[], char b[]){
 }
 
 
-// TIM SO NGUYEN TO
-// tra ve gia tri 1 va 0
-// 1 la co
-// 0 la ko
+// Tìm số nguyên tố
+// trả lại giá trị 0 và 1
+// 1 là có là số nguyên tố
+// 0 là không phải số nguyên tố
 int isPrime(int a){
     int isPrime = 0;
     for (int i = 2; i < sqrt(a); i++) {
@@ -41,7 +41,7 @@ int isPrime(int a){
     return isPrime;
 }
 
-// Tra lai tong cac chu so
+// Trả lại tổng các chữ số
 int sumOfDigits(int a){
     int sum = 0;
     while (a != 0) {
@@ -60,8 +60,119 @@ int countDigit(int a){
     return count;
 }
 
+
+// Tìm số lớn nhất trong chuỗi
+int findMax(int a[], int arraySize){
+    int max = a[0];
+    for (int i = 0; i < arraySize; i++) {
+        if (a[i] > max) {
+            max = a[i];
+        }
+    }
+    return max;
+}
+
+// Tìm vị trí số lớn nhất trong chuỗi
+int findMaxPosition(int a[], int arraySize){
+    int max = a[0];
+    int position = 0;
+    for (int i = 0; i < arraySize; i++) {
+        if (a[i] > max) {
+            max = a[i];
+            position = i;
+        }
+    }
+    return position;
+}
+
+
+// Tìm số nhỏ nhất trong chuỗi
+int findMin(int a[], int arraySize){
+    int min = a[0];
+    for (int i = 0; i < arraySize; i++) {
+        if (a[i] < min) {
+            min = a[i];
+        }
+    }
+    return min;
+}
+
+// Tìm vị trí số nhỏ nhất trong chuỗi
+int findMinPosition(int a[], int arraySize){
+    int min = a[0];
+    int position = 0;
+    for (int i = 0; i < arraySize; i++) {
+        if (a[i] < min) {
+            min = a[i];
+            position = i;
+        }
+    }
+    return position;
+}
+///////////////////////////////////////////////////////////////////
+
+double findMax(double a[], int listSize){
+    double max = a[0];
+    for (int i = 0; i < listSize; i++) {
+        if (a[i] > max) {
+            max = a[i];
+        }
+    }
+    return max;
+}
+
+double findMaxPosition(double a[], int listSize){
+    double max = a[0];
+    int position = 0;
+    for (int i = 0; i < listSize; i++) {
+        if (a[i] > max) {
+            max = a[i];
+            position = i;
+        }
+    }
+    return position;
+}
+
+double findMin(double a[], int listSize){
+    double min = a[0];
+    for (int i = 0; i < listSize; i++) {
+        if (a[i] < min) {
+            min = a[i];
+        }
+    }
+    return min;
+}
+
+double findMinPosition(double a[], int listSize){
+    double min = a[0];
+    int position = 0;
+    for (int i = 0; i < listSize; i++) {
+        if (a[i] < min) {
+            min = a[i];
+            position = i;
+        }
+    }
+    return position;
+}
+
+//////////////////////////////////////////////////////
+
+// Tìm giá trị value trong danh sách
+// findValueInArray trả lại 2 giá trị 1 và 0
+// 1 : có trong danh sách
+// 0 : không có trong danh sách
+int findValueInArray(int a[], int listSize, int value){
+    for (int i = 0; i < listSize; i++) {
+        if (a[i] == value) {
+            return 1;
+        }
+    }
+    return 0;
+}
+
 int main() {
     // int x = isPrime(2);
-    int x = countDigit(2123);
-    printf("%d\n", x);
+    int a[] = {1,2,5,4,8};
+    int x = findMin(a,5);
+    printf("%f\n", x);
 }
