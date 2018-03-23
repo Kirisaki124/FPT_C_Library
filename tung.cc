@@ -177,6 +177,20 @@ int findValueInArray(int a[], int listSize, int value){
     return 0;
 }
 
-int main() {
+// Đảo ngược array
+void reverseArray(int a[], int listSize) {
+    listSize -= 1;
+    int size = listSize;
+    for (int i = 0; i < (listSize / 2); i++) {
+        swap(a[i], a[size--]);
+    }
+}
 
+// Giai thừa
+int factorial(int n){
+    int result = 1;
+    for (int i = 1; i <= n; i++) {
+        result *= i;
+    }
+    return result;
 }
