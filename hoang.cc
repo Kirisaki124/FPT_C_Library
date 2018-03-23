@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
+#include <ctype.h>
 #include "tung.cc"
 
 // Trả về số nhỏ hơn trong 2 số nguyên
@@ -69,6 +71,7 @@ int lcm(int a, int b) {
 }
 
 // Chèn một số nguyên vào mảng có kích thước length tại vị trí pos 
+// Ex: a = 1 2 3 4 5, n = 5 -> insertArray(a, n, 10, 1) -> 1 10 2 3 4 5, n = 6
 void insertArray(int a[], int &arraySize, int item, int pos) {
 	++arraySize;
 	for (int i = arraySize - 1; i > pos; i--) {
@@ -78,6 +81,7 @@ void insertArray(int a[], int &arraySize, int item, int pos) {
 }
 
 // Chèn một số thực vào mảng có kích thước length tại vị trí pos 
+// Ex: a = 1 2 3 4 5, n = 5 -> insertArray(a, n, 10, 1) -> 1 10 2 3 4 5, n = 6
 void insertArray(double a[], int &arraySize, double item, int pos) {
 	++arraySize;
 	for (int i = pos + 1; i < arraySize; i++) {
@@ -87,7 +91,8 @@ void insertArray(double a[], int &arraySize, double item, int pos) {
 }
 
 // Xóa phần tử trong mảng số nguyên tại vị trí pos
-void deleteArrayAtPos(int a[], int &arraySize, int pos) {
+// Ex: a = 1 2 3 4 5, n = 5 -> deleteArray(a, n, 1) -> 1 3 4 5, n = 4
+void deleteArray(int a[], int &arraySize, int pos) {
 	for (int i = pos; i < arraySize - 1; i++) {
 		a[i] = a[i + 1];
 	}
@@ -95,7 +100,8 @@ void deleteArrayAtPos(int a[], int &arraySize, int pos) {
 }
 
 // Xóa phần tử trong mảng số thực tại vị trí pos
-void deleteArrayAtPos(double a[], int &arraySize, int pos) {
+// Ex: a = 1 2 3 4 5, n = 5 -> deleteArray(a, n, 1) -> 1 3 4 5, n = 4
+void deleteArray(double a[], int &arraySize, int pos) {
 	for (int i = pos; i < arraySize - 1; i++) {
 		a[i] = a[i + 1];
 	}
@@ -103,6 +109,8 @@ void deleteArrayAtPos(double a[], int &arraySize, int pos) {
 }
 
 // Sắp xếp mảng số nguyên, isIncreasing = 0 thì giảm dần, không thì tăng dần
+// Ex: a = {1 2 3 4 5} -> sort(a, n, 0) -> 5 4 3 2 1
+// Ex: a = {5 4 3 2 1} -> sort(a, n, 1) -> 1 2 3 4 5
 void sort(int a[], int arraySize, int isIncreasing) {
 	for (int i = arraySize - 1; i > 0; i--) {
 		for (int j = 0; j < i; j++) {
@@ -115,6 +123,7 @@ void sort(int a[], int arraySize, int isIncreasing) {
 }
 
 // Sắp xếp mảng số thực, isIncreasing = 0 thì giảm dần, không thì tăng dần
+
 void sort(double a[], int arraySize, int isIncreasing) {
 	for (int i = arraySize - 1; i > 0; i--) {
 		for (int j = 0; j < i; j++) {
@@ -127,24 +136,47 @@ void sort(double a[], int arraySize, int isIncreasing) {
 }
 
 // Sắp xếp mảng xâu, isIncreasing = 0 thì giảm dần, không thì tăng dần
+// Ex: a = {1 2 3 4 5} -> sort(a, n, 0) -> 5 4 3 2 1
+// Ex: a = {5 4 3 2 1} -> sort(a, n, 1) -> 1 2 3 4 5
 void sort(char *a[], int arraySize, int isIncreasing) {
 	for (int i = arraySize - 1; i > 0; i--) {
 		for (int j = 0; j < i; j++) {
 			if ((strcmp(a[j], a[j + 1]) > 0) == isIncreasing) {
 				// Phải có hàm swap mới dùng được
 				// Phải có dấu & trước tên biến
-				//swapString(&a[j], &a[j + 1]);
+				swapString(&a[j], &a[j + 1]);
 			}
 		}
 	}
 }
 
+// Tách xâu thành mảng kí tự stringList theo splitBy.
+// stringList[100][100]: Số 100 cần được thay đổi bằng đúng kích thước đề bài
+// Example: Hello world from C -> stringList[0] = "Hello", stringList[1] = "world", ...
+void splitString(char *s, char stringList[100][100], int &wordCount, const char *splitBy) {
+	char *tmpStr = strtok(s, splitBy);
+	while (tmpStr != NULL) {
+		strcpy(stringList[wordCount++], tmpStr);
+		tmpStr = strtok(NULL, splitBy);
+	}
+}
+
+// Chuyển một xâu thành chữ hoa: abcd ->  ABCD
+void stringUpper(char *s) {
+	for (int i = 0; i < strlen(s); i++) {
+		s[i] = toupper(s[i]);
+	}
+}
+
+// Chuyển một xâu thành chữ thường
+// VD: ABCD -> abcd
+void stringLower(char *s) {
+	for (int i = 0; i < strlen(s); i++) {
+		s[i] = tolower(s[i]);
+	}
+}
+
 int main() {
-    double a[10] = {1.3, 2.3, 3.3, 4.3, 5.2};
-    int length = 5;
-    deleteArrayAtPos(a, length, 3);
-    for (int i = 0; i < length; i++) {
-    	printf("%f ", a[i]);
-    }
+    
     system("pause");
 }
