@@ -43,7 +43,7 @@ void swapString(char **str1_ptr, char **str2_ptr)
 // 1 là có là số nguyên tố
 // 0 là không phải số nguyên tố
 int isPrime(int a){
-    int isPrime = 0;
+    int isPrime = a >= 2;
     for (int i = 2; i < sqrt(a); i++) {
         if (a % i == 0) {
             isPrime = 1;
@@ -89,8 +89,6 @@ int countDigit(int a){
 // int x = countDigit(1234);
 // OUTPUT
 // x = 4
-
-
 
 // Tìm số lớn nhất trong chuỗi
 int findMax(int a[], int arraySize){
@@ -215,6 +213,16 @@ void reverseArray(int a[], int listSize) {
 // OUTPUT
 // a[] = {7,6,5,4,3,2,1}
 
+// Cắt 1 số n thành mảng các số
+// VD: n = 12345 -> a = [1][2][3][4][5], arraySize = 5
+void intToArray(int n, int a[], int &arraySize) {
+    arraySize = 0;
+    while (n > 0) {
+        a[arraySize++] = n % 10;
+        n /= 10;
+    }
+    reverseArray(a, arraySize);
+}
 
 // Giai thừa
 int factorial(int n){
