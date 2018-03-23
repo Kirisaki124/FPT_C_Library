@@ -178,6 +178,5 @@ int findValueInArray(int a[], int listSize, int value){
 }
 
 int main() {
-    // int x = isPrime(2);
 
 }
