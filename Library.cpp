@@ -44,9 +44,9 @@ void swapString(char **str1_ptr, char **str2_ptr)
 // 0 là không phải số nguyên tố
 int isPrime(int a){
     int isPrime = a >= 2;
-    for (int i = 2; i < sqrt(a); i++) {
+    for (int i = 2; i <= sqrt(a); i++) {
         if (a % i == 0) {
-            isPrime = 1;
+            isPrime = 0;
             break;
         }
     }
